@@ -42,7 +42,6 @@ dependencies:
   flutter_datetime_picker: ^1.5.1
   google_fonts: ^3.0.1
   flutter_easyloading: ^3.0.5
-  image_crop: ^0.4.1
   fluttertoast: ^8.1.1
   get_storage: ^2.0.3
   pretty_dio_logger: ^1.1.1
