@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter_base_framework/app/themes/app_colors.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -8,8 +10,24 @@ import 'package:flutter_base_framework/app/translations/app_translations.dart';
 import 'package:flutter_base_framework/app/utils/common.dart';
 import 'package:flutter_base_framework/app/utils/extensions.dart';
 
-void main() async {
+import 'app/store/app_service.dart';
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  /// 初始化GetX storage
+  await initServices();
+
+  /// 设置状态栏颜色为透明
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
+  );
+
+  SystemChrome.setPreferredOrientations([
+    // 强制竖屏
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]);
 
   runApp(const MyApp());
 }
@@ -17,7 +35,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  // This widget is the root of your application.s
   @override
   Widget build(BuildContext context) {
     "Your device locale: ${Get.deviceLocale}".logStr(name: 'Locale');
@@ -50,4 +68,6 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+  
 }
+
